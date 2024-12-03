@@ -1,0 +1,28 @@
+#Step 1 - Setup
+# on Ubuntu or Debian
+sudo apt update && sudo apt install ffmpeg
+#  on  MacOS  using Homebrew (https://brew.sh/)
+brew install ffmpeg
+# on Windows using Chocolatey (https://chocolatey.org/)
+choco install ffmpeg
+#Installing PyTorch
+pip install torch torchvision	
+
+#Step 2 - Installation 
+pip install git+https://github.com/openai/whisper.git	
+
+#Step 3 - Model Importation 
+import whisper
+# loading the model - choose size: tiny, base, small, medium, or large
+model = whisper.load_model("small")
+
+#Step 4 - Transcription 
+#choose audio file name and format
+result = model.transcribe("test.m4a")
+
+#Step 5 - Results Assessment
+# Display the transcribed text
+print(result["text"])
+# Save the transcribed text into a .txt fil
+with open("test_transciption.txt", "w") as f: 
+    f.write(result["text"])
